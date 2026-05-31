@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>손글씨 숫자 이미지 분류 프로젝트</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      line-height: 1.7;
+      padding: 0 20px;
+      color: #222;
+    }
+
+    h1 {
+      border-bottom: 2px solid #222;
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 6px;
+    }
+
+    h3 {
+      margin-top: 25px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 15px 0;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    code {
+      background-color: #f3f3f3;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+
+    .box {
+      background-color: #f8f8f8;
+      border-left: 4px solid #777;
+      padding: 10px 15px;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>손글씨 숫자 이미지 분류 프로젝트</h1>
+
+<h2>팀원</h2>
+<ul>
+  <li>이성빈, 학과명, 이메일</li>
+  <li>팀원 이름, 학과명, 이메일</li>
+</ul>
+
+<h2>목차</h2>
+<ol>
+  <li>프로젝트 제안</li>
+  <li>현재까지 진행한 과정</li>
+  <li>데이터셋 조사</li>
+  <li>분석 방법 계획</li>
+  <li>현재 작성 중인 코드</li>
+  <li>앞으로 진행할 내용</li>
+  <li>관련 자료</li>
+  <li>팀원별 역할</li>
+</ol>
+
+<h2>1. 프로젝트 제안</h2>
+
+<h3>주제</h3>
+<p>
+이번 프로젝트의 주제는 <strong>손글씨 숫자 이미지 분류</strong>이다.
+</p>
+
+<h3>주제 선택 이유</h3>
+<p>
+AI와 머신러닝을 처음 배울 때 이미지 분류는 결과를 눈으로 확인하기 쉬운 주제라고 생각했다.
+숫자는 0부터 9까지 정답이 분명하고, 이미지도 복잡하지 않기 때문에 처음 프로젝트를 진행하기에 적당하다고 판단했다.
+</p>
+
+<p>
+처음에는 딥러닝을 바로 적용하는 것도 생각했지만, 아직 모델 구조나 학습 과정이 익숙하지 않기 때문에
+우선은 scikit-learn에서 제공하는 손글씨 숫자 데이터셋을 이용해 기본적인 분류 과정을 먼저 해보기로 했다.
+</p>
+
+<h3>최종적으로 확인하고 싶은 내용</h3>
+<ul>
+  <li>손글씨 숫자 이미지가 컴퓨터 안에서 어떤 데이터 형태로 표현되는지 확인한다.</li>
+  <li>이미지 데이터를 학습 데이터와 테스트 데이터로 나누어본다.</li>
+  <li>간단한 분류 모델을 사용해 0부터 9까지의 숫자를 예측해본다.</li>
+  <li>모델이 어떤 숫자를 잘 맞히고, 어떤 숫자에서 헷갈리는지 확인한다.</li>
+</ul>
+
+<div class="box">
+  이 페이지는 최종 결과물이 아니라 프로젝트 진행 상황을 정리한 중간 과정 블로그이다.
+  현재는 주제 선정, 블로그 개설, 데이터셋 조사, 기본 코드 구상 단계까지 진행하였다.
+</div>
+
+<h2>2. 현재까지 진행한 과정</h2>
+
+<table>
+  <tr>
+    <th>순서</th>
+    <th>진행 내용</th>
+    <th>상태</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>GitHub Pages 블로그 생성</td>
+    <td>완료</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>프로젝트 주제 선정</td>
+    <td>완료</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>사용할 데이터셋 조사</td>
+    <td>진행 중</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>분류 모델 후보 조사</td>
+    <td>진행 중</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>기본 코드 작성</td>
+    <td>시작 단계</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>정확도 및 그래프 정리</td>
+    <td>예정</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>영상 또는 음성 설명 녹화</td>
+    <td>예정</td>
+  </tr>
+</table>
+
+<h3>현재 생각한 프로젝트 흐름</h3>
+<ol>
+  <li>손글씨 숫자 데이터셋을 불러온다.</li>
+  <li>데이터의 크기와 이미지 형태를 확인한다.</li>
+  <li>몇 개의 숫자 이미지를 직접 시각화해본다.</li>
+  <li>입력 데이터와 정답 라벨을 나눈다.</li>
+  <li>학습 데이터와 테스트 데이터로 분리한다.</li>
+  <li>분류 모델을 학습시킨다.</li>
+  <li>테스트 데이터에서 정확도를 확인한다.</li>
+  <li>틀린 예측이나 혼동행렬을 확인한다.</li>
+</ol>
+
+<h2>3. 데이터셋 조사</h2>
+
+<p>
+현재 사용할 데이터셋으로 scikit-learn의 <code>digits</code> 데이터셋을 조사하고 있다.
+이 데이터셋은 손글씨 숫자 이미지로 구성되어 있으며, 각 데이터는 0부터 9까지의 숫자 중 하나에 해당한다.
+</p>
+
+<p>
+scikit-learn 공식 문서에 따르면 digits 데이터셋은 분류용 데이터셋이며, 각 데이터는 8×8 크기의 손글씨 숫자 이미지이다.
+전체 샘플 수는 1797개이고, 각 이미지는 64개의 픽셀 값으로 표현된다.
+</p>
+
+<table>
+  <tr>
+    <th>항목</th>
+    <th>내용</th>
+  </tr>
+  <tr>
+    <td>데이터셋</td>
+    <td>scikit-learn digits dataset</td>
+  </tr>
+  <tr>
+    <td>데이터 종류</td>
+    <td>손글씨 숫자 이미지</td>
+  </tr>
+  <tr>
+    <td>분류 대상</td>
+    <td>0부터 9까지의 숫자</td>
+  </tr>
+  <tr>
+    <td>이미지 크기</td>
+    <td>8 × 8 픽셀</td>
+  </tr>
+  <tr>
+    <td>입력 데이터</td>
+    <td>64개의 픽셀 값</td>
+  </tr>
+  <tr>
+    <td>예측 대상</td>
+    <td>숫자 라벨</td>
+  </tr>
+</table>
+
+<h3>이 데이터셋을 선택한 이유</h3>
+<p>
+이 데이터셋은 별도로 이미지를 수집하지 않아도 바로 사용할 수 있고, 데이터 크기도 너무 크지 않다.
+또한 숫자 이미지는 결과를 직접 눈으로 확인할 수 있기 때문에, 프로젝트 진행 과정과 결과를 블로그에 설명하기 좋다고 생각했다.
+</p>
+
+<h2>4. 분석 방법 계획</h2>
+
+<h3>처음에 사용할 방법</h3>
+<p>
+처음에는 <strong>Logistic Regression</strong>을 사용해볼 계획이다.
+이 방법은 이름에 Regression이 들어가지만 분류 문제에도 사용할 수 있다.
+이번 프로젝트에서는 0부터 9까지 여러 숫자 중 하나를 예측하는 다중 분류 문제로 사용해볼 예정이다.
+</p>
+
+<h3>추가로 비교해볼 수 있는 방법</h3>
+<p>
+시간이 가능하면 kNN 또는 SVM도 추가로 사용해보고, 모델별 정확도를 비교할 예정이다.
+다만 중간 과정에서는 먼저 한 가지 모델로 데이터 불러오기부터 예측까지의 전체 흐름을 만드는 것을 목표로 한다.
+</p>
+
+<h3>평가 방법</h3>
+<p>
+모델 성능은 우선 정확도로 확인할 예정이다. 정확도는 전체 테스트 데이터 중 모델이 정답을 맞힌 비율을 의미한다.
+최종 블로그에서는 정확도뿐 아니라 혼동행렬도 함께 확인하여 어떤 숫자끼리 자주 헷갈리는지 살펴볼 계획이다.
+</p>
+
+<h2>5. 현재 작성 중인 코드</h2>
+
+<p>
+아래 코드는 현재 작성 중인 기본 코드이다. 아직 최종 결과를 완성한 상태는 아니며,
+데이터를 불러오고 학습 데이터와 테스트 데이터를 나눈 뒤 간단한 모델을 적용하는 흐름을 먼저 잡고 있다.
+</p>
+
+<pre><code>from sklearn.datasets import load_digits
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix
+import matplotlib.pyplot as plt
+
+# 1. 데이터 불러오기
+digits = load_digits()
+
+# 2. 입력 데이터와 정답 라벨 나누기
+X = digits.data
+y = digits.target
+
+print("입력 데이터 크기:", X.shape)
+print("정답 라벨 크기:", y.shape)
+
+# 3. 샘플 이미지 확인
+plt.imshow(digits.images[0], cmap="gray")
+plt.title("Sample digit image")
+plt.show()
+
+# 4. 학습 데이터와 테스트 데이터 나누기
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.3,
+    random_state=42
+)
+
+# 5. 모델 생성 및 학습
+model = LogisticRegression(max_iter=3000)
+model.fit(X_train, y_train)
+
+# 6. 테스트 데이터 예측
+y_pred = model.predict(X_test)
+
+# 7. 정확도 확인
+accuracy = accuracy_score(y_test, y_pred)
+print("Test Accuracy:", accuracy)
+
+# 8. 혼동행렬 확인
+cm = confusion_matrix(y_test, y_pred)
+print(cm)
+</code></pre>
+
+<h3>현재 코드에서 확인하려는 것</h3>
+<ul>
+  <li><code>X.shape</code>를 통해 입력 데이터의 크기를 확인한다.</li>
+  <li><code>y.shape</code>를 통해 정답 라벨의 개수를 확인한다.</li>
+  <li><code>plt.imshow()</code>로 실제 숫자 이미지가 어떻게 보이는지 확인한다.</li>
+  <li><code>train_test_split()</code>으로 학습 데이터와 테스트 데이터를 나눈다.</li>
+  <li>모델을 학습시킨 뒤 테스트 정확도를 확인한다.</li>
+</ul>
+
+<h2>6. 앞으로 진행할 내용</h2>
+
+<table>
+  <tr>
+    <th>앞으로 할 일</th>
+    <th>설명</th>
+  </tr>
+  <tr>
+    <td>데이터 시각화 추가</td>
+    <td>여러 개의 손글씨 숫자 이미지를 화면에 출력해 데이터 형태를 보여줄 예정이다.</td>
+  </tr>
+  <tr>
+    <td>정확도 결과 정리</td>
+    <td>Logistic Regression 모델의 테스트 정확도를 표로 정리할 예정이다.</td>
+  </tr>
+  <tr>
+    <td>혼동행렬 분석</td>
+    <td>모델이 어떤 숫자를 다른 숫자로 잘못 분류하는지 확인할 예정이다.</td>
+  </tr>
+  <tr>
+    <td>다른 모델 비교</td>
+    <td>가능하면 kNN 또는 SVM을 추가하여 정확도를 비교할 예정이다.</td>
+  </tr>
+  <tr>
+    <td>영상 또는 음성 설명</td>
+    <td>최종 제출 전에 블로그 내용을 설명하는 5~10분 정도의 영상 또는 음성을 준비할 예정이다.</td>
+  </tr>
+</table>
+
+<h2>7. 관련 자료</h2>
+
+<ul>
+  <li>scikit-learn digits dataset 공식 문서: https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html</li>
+  <li>scikit-learn toy datasets 설명: https://scikit-learn.org/stable/datasets/toy_dataset.html</li>
+  <li>scikit-learn Logistic Regression 문서: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html</li>
+  <li>scikit-learn train_test_split 문서: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html</li>
+</ul>
+
+<h2>8. 팀원별 역할</h2>
+
+<p>
+현재 단계에서의 역할 분담은 다음과 같다. 최종 제출 전까지 실제 진행 상황에 맞게 수정할 예정이다.
+</p>
+
+<ul>
+  <li>이성빈: GitHub Pages 블로그 생성, 주제 선정, 데이터셋 조사, 기본 코드 작성</li>
+  <li>팀원 이름: 참고 자료 조사, 결과 정리, 발표 또는 녹음 준비</li>
+</ul>
+
+<h2>9. 현재 상태 정리</h2>
+
+<p>
+현재까지는 GitHub Pages를 이용한 블로그 공간을 만들었고, 프로젝트 주제를 손글씨 숫자 이미지 분류로 정하였다.
+또한 사용할 데이터셋으로 scikit-learn의 digits 데이터셋을 조사하고, 기본적인 분석 코드의 흐름을 작성하고 있다.
+</p>
+
+<p>
+아직 최종 정확도나 혼동행렬 분석까지는 완성하지 않았기 때문에, 다음 단계에서는 코드를 실행하여 실제 결과를 확인하고,
+그 결과를 그래프와 표로 정리할 예정이다.
+</p>
+
+<h2>10. 영상/음성 링크</h2>
+
+<p>
+영상 또는 음성 설명은 최종 제출 전에 추가할 예정이다.
+</p>
+
+</body>
+</html>
